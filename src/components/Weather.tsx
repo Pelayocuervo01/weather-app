@@ -7,9 +7,17 @@ import  humidity from "../assets/humidity.png"
 import  rainIcon from "../assets/rain.png"
 import  snowIcon from "../assets/snow.png"
 import  windIcon from "../assets/wind.png"
-
+import { useEffect, useState } from "react"
+import { searchCityApi } from "../Scripts/SearchCityApi"
 
 export function Weather() {
+    const [weatherData, setWeatherData] = useState(null)
+
+    useEffect(() => {
+        searchCityApi("London").then((data) => {
+            setWeatherData(data)
+        })
+      }, [])
     return (
         <div className="weather">
             <div className= "weather">
